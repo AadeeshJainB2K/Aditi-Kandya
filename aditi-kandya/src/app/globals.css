@@ -24,3 +24,40 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.theme-switch input:checked + .theme-switch__container {
+  background-color: #1d1f2c;
+}
+
+.theme-switch
+  input:checked
+  + .theme-switch__container
+  .theme-switch__circle-container {
+  left: calc(100% - 2.7em + 0.35em) !important;
+}
+
+.theme-switch
+  input:checked
+  + .theme-switch__container
+  .theme-switch__circle-container:hover {
+  left: calc(100% - 2.7em + 0.35em - 0.15em) !important;
+}
+
+.theme-switch .theme-switch__circle-container:hover {
+  left: calc(-0.35em + 0.15em) !important;
+}
+
+.theme-switch input:checked + .theme-switch__container .theme-switch__moon {
+  transform: translate(0) !important;
+}
+
+.theme-switch input:checked + .theme-switch__container .theme-switch__clouds {
+  bottom: -3.25em !important;
+}
+
+.theme-switch
+  input:checked
+  + .theme-switch__container
+  .theme-switch__stars-container {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
