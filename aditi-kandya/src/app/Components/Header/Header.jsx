@@ -86,9 +86,9 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/courses"
                   className={`block py-2 px-3 rounded-sm md:border-0 md:p-0 ${
-                    isActive("#")
+                    isActive("/courses")
                       ? "text-blue-700 dark:text-blue-500"
                       : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                   }`}
@@ -98,9 +98,9 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/performances"
                   className={`block py-2 px-3 rounded-sm md:border-0 md:p-0 ${
-                    isActive("#")
+                    isActive("/performances")
                       ? "text-blue-700 dark:text-blue-500"
                       : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                   }`}

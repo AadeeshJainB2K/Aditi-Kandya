@@ -242,9 +242,12 @@ const Contact = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-3 md:space-y-0 md:space-x-3 md:flex-row">
-              <button className="px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">
+              <a
+                href="/courses"
+                className="px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition"
+              >
                 Schedule a Lesson
-              </button>
+              </a>
               <a
                 href="https://www.youtube.com/@aditikandya7736"
                 target="_blank"

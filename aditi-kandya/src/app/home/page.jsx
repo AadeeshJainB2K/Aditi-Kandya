@@ -38,7 +38,7 @@ const Home = () => {
                       <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                         <div className="rounded-md shadow">
                           <a
-                            href="#"
+                            href="/courses"
                             className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
                           >
                             Book a Lesson
@@ -318,7 +318,7 @@ const Home = () => {
 
               <div className="mt-10 text-center">
                 <a
-                  href="#"
+                  href="/performances"
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
                 >
                   View All Events
@@ -409,7 +409,7 @@ const Home = () => {
                 offer personalized lessons to help you reach your musical goals.
               </p>
               <a
-                href="#"
+                href="/contact"
                 className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 sm:w-auto"
               >
                 Contact Me

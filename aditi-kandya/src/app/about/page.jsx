@@ -25,12 +25,19 @@ const About = () => {
               examinations, and concert performances worldwide.
             </p>
             <div className="flex gap-4">
-              <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+              <a
+                href="/courses"
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              >
                 Book a Lesson
-              </button>
-              <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+              </a>
+
+              <a
+                href="/performances"
+                className="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition"
+              >
                 View Performances
-              </button>
+              </a>
             </div>
           </div>
           <div className="md:w-1/2 relative aspect-square rounded-2xl overflow-hidden shadow-xl">
@@ -300,9 +307,12 @@ const About = () => {
             play for pleasure, I offer personalized lessons to help you achieve
             your musical goals.
           </p>
-          <button className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">
+          <a
+            href="/courses"
+            className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition"
+          >
             Schedule Your First Lesson
-          </button>
+          </a>
         </section>
       </main>
     </div>
