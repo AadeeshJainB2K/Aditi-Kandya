@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700">
         <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link
             href="/home"
@@ -110,9 +110,9 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/contact"
                   className={`block py-2 px-3 rounded-sm md:border-0 md:p-0 ${
-                    isActive("#")
+                    isActive("/contact")
                       ? "text-blue-700 dark:text-blue-500"
                       : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                   }`}

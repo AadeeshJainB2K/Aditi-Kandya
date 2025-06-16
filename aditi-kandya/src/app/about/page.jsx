@@ -8,7 +8,7 @@ const About = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-23">
         {/* Hero Section */}
         <section className="flex flex-col md:flex-row items-center gap-12 mb-16">
           <div className="md:w-1/2">

@@ -8,13 +8,20 @@ const Home = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      <main>
+      {/* Main content with proper spacing for fixed header */}
+      <main className="pt-15">
+        {" "}
+        {/* Adjusted padding-top to match header height */}
         {/* Hero Section */}
         <section className="relative bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto">
             <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-              <div className="pt-10 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
-                <div className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+              <div className="pt-4 sm:pt-10 lg:pt-4 lg:pb-14 lg:overflow-hidden">
+                {" "}
+                {/* Reduced top padding */}
+                <div className="mt-4 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6 md:mt-12 lg:mt-16 lg:px-8 xl:mt-20">
+                  {" "}
+                  {/* Adjusted margins */}
                   <div className="sm:text-center lg:text-left">
                     <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                       <span className="block">Master the Piano</span>
@@ -62,7 +69,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-
         {/* Teaching Approach */}
         <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -229,7 +235,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-
         {/* Performance Highlights */}
         <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -320,7 +325,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-
         {/* Testimonials */}
         <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -390,7 +394,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-
         {/* Call to Action */}
         <section className="bg-blue-700">
           <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
