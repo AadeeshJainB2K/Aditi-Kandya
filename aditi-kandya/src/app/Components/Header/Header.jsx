@@ -22,7 +22,7 @@ const Header = () => {
           >
             <div className="relative w-10 h-10 rounded-full overflow-hidden">
               <Image
-                src="/Images/Profile_Picture.jpeg"
+                src="/images/profilePicture.jpeg"
                 alt="Aditi Kanya"
                 fill
                 className="object-cover"
