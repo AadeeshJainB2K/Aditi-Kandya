@@ -2,8 +2,16 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathname = usePathname();
+
+  // Function to determine if a link is active
+  const isActive = (href) => {
+    return pathname === href;
+  };
+
   return (
     <>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -53,8 +61,12 @@ const Header = () => {
               <li>
                 <Link
                   href="/home"
-                  className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                  aria-current="page"
+                  className={`block py-2 px-3 rounded-sm md:border-0 md:p-0 ${
+                    isActive("/home")
+                      ? "text-blue-700 dark:text-blue-500"
+                      : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                  }`}
+                  aria-current={isActive("/home") ? "page" : undefined}
                 >
                   Home
                 </Link>
@@ -62,7 +74,12 @@ const Header = () => {
               <li>
                 <Link
                   href="/about"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={`block py-2 px-3 rounded-sm md:border-0 md:p-0 ${
+                    isActive("/about")
+                      ? "text-blue-700 dark:text-blue-500"
+                      : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                  }`}
+                  aria-current={isActive("/about") ? "page" : undefined}
                 >
                   About
                 </Link>
@@ -70,7 +87,11 @@ const Header = () => {
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={`block py-2 px-3 rounded-sm md:border-0 md:p-0 ${
+                    isActive("#")
+                      ? "text-blue-700 dark:text-blue-500"
+                      : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                  }`}
                 >
                   Courses
                 </Link>
@@ -78,7 +99,11 @@ const Header = () => {
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={`block py-2 px-3 rounded-sm md:border-0 md:p-0 ${
+                    isActive("#")
+                      ? "text-blue-700 dark:text-blue-500"
+                      : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                  }`}
                 >
                   Performances
                 </Link>
@@ -86,7 +111,11 @@ const Header = () => {
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={`block py-2 px-3 rounded-sm md:border-0 md:p-0 ${
+                    isActive("#")
+                      ? "text-blue-700 dark:text-blue-500"
+                      : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
+                  }`}
                 >
                   Contact
                 </Link>
