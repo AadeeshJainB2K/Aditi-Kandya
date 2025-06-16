@@ -72,7 +72,7 @@ const Header = () => {
                   href="#"
                   className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
-                  Services
+                  Courses
                 </Link>
               </li>
               <li>
@@ -80,7 +80,7 @@ const Header = () => {
                   href="#"
                   className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
-                  Pricing
+                  Performances
                 </Link>
               </li>
               <li>
@@ -117,7 +117,7 @@ const Header = () => {
 
                       {/* Fixed circle container with corrected night mode position */}
                       <div className="theme-switch__circle-container w-[2.7em] h-[2.7em] bg-[rgba(255,255,255,0.1)] absolute left-[-0.35em] top-[-0.35em] rounded-[6.25em] shadow-[inset_0_0_0_2.7em_rgba(255,255,255,0.1),inset_0_0_0_2.7em_rgba(255,255,255,0.1),0_0_0_0.5em_rgba(255,255,255,0.1),0_0_0_1em_rgba(255,255,255,0.1)] flex transition-[0.3s_cubic-bezier(0,-0.02,0.35,1.17)] pointer-events-none peer-checked:left-[calc(100%-2.7em+0.35em)]">
-                        <div className="theme-switch__sun-moon-container pointer-events-auto relative z-[2] w-[1.7em] h-[1.7em] m-auto rounded-[6.25em] bg-[#ECCA2F] shadow-[0.05em_0.05em_0.05em_0em_rgba(254,255,239,0.61)_inset,0em_-0.05em_0.05em_0em_#a1872a_inset] filter drop-shadow-[0.05em_0.1em_0.1em_rgba(0,0,0,0.25)] drop-shadow-[0em_0.05em_0.1em_rgba(0,0,0,0.25)] overflow-hidden transition-[0.5s_cubic-bezier(0,-0.02,0.4,1.25)]">
+                        <div className="theme-switch__sun-moon-container pointer-events-auto relative z-[2] w-[1.7em] h-[1.7em] m-auto rounded-[6.25em] bg-[#ECCA2F] shadow-[0.05em_0.05em_0.05em_0em_rgba(254,255,239,0.61)_inset,0em_-0.05em_0.05em_0em_#a1872a_inset] filter drop-shadow-[0em_0.05em_0.1em_rgba(0,0,0,0.25)] overflow-hidden transition-[0.5s_cubic-bezier(0,-0.02,0.4,1.25)]">
                           <div className="theme-switch__moon translate-x-[100%] w-full h-full bg-[#C4C9D1] rounded-[inherit] shadow-[0.05em_0.05em_0.05em_0em_rgba(254,255,239,0.61)_inset,0em_-0.05em_0.05em_0em_#969696_inset] transition-[0.5s_cubic-bezier(0,-0.02,0.4,1.25)] relative peer-checked:translate-x-0">
                             <div className="theme-switch__spot absolute top-[0.6em] left-[0.25em] w-[0.6em] h-[0.6em] rounded-[6.25em] bg-[#959DB1] shadow-[0em_0.025em_0.05em_rgba(0,0,0,0.25)_inset]"></div>
                             <div className="theme-switch__spot absolute top-[0.75em] left-[1.1em] w-[0.3em] h-[0.3em] rounded-[6.25em] bg-[#959DB1] shadow-[0em_0.025em_0.05em_rgba(0,0,0,0.25)_inset]"></div>
