@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -8,19 +8,43 @@ const Header = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const mobileMenuRef = useRef(null);
 
   const isActive = (href) => pathname === href;
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = (e) => {
+    // Prevent the event from propagating to document
+    e.stopPropagation();
+    setIsMenuOpen(false);
+  };
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    document.documentElement.classList.toggle("dark", newMode);
+
+    // Save preference to localStorage
+    localStorage.setItem("darkMode", newMode);
   };
 
   useEffect(() => {
+    // Check for saved dark mode preference
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    if (savedDarkMode) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+
     const handleClickOutside = (event) => {
-      if (isMenuOpen && !event.target.closest("#mobile-menu")) {
+      if (
+        isMenuOpen &&
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target)
+      ) {
         setIsMenuOpen(false);
       }
     };
@@ -40,7 +64,7 @@ const Header = () => {
             <div className="relative w-10 h-10 rounded-full overflow-hidden">
               <Image
                 src="/images/header/profilePicture.jpeg"
-                alt="Aditi Kanya"
+                alt="Aditi Kandya"
                 fill
                 sizes="40px"
                 className="object-cover"
@@ -205,7 +229,8 @@ const Header = () => {
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
-        className={`fixed top-0 right-0 z-40 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out ${
+        ref={mobileMenuRef}
+        className={`fixed top-0 right-0 z-40 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } md:hidden`}
       >
@@ -214,12 +239,12 @@ const Header = () => {
             <Link
               href="/home"
               className="flex items-center space-x-3 rtl:space-x-reverse"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               <div className="relative w-10 h-10 rounded-full overflow-hidden">
                 <Image
                   src="/images/header/profilePicture.jpeg"
-                  alt="Aditi Kanya"
+                  alt="Aditi Kandya"
                   fill
                   sizes="40px"
                   className="object-cover"
@@ -230,7 +255,8 @@ const Header = () => {
               </span>
             </Link>
             <button
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
+              onMouseDown={(e) => e.stopPropagation()} // Prevent event propagation
               type="button"
               className="p-2 text-gray-500 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             >
@@ -259,7 +285,7 @@ const Header = () => {
                     ? "text-blue-700 dark:text-blue-500 bg-gray-100 dark:bg-gray-700"
                     : "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenu}
               >
                 Home
               </Link>
@@ -272,7 +298,7 @@ const Header = () => {
                     ? "text-blue-700 dark:text-blue-500 bg-gray-100 dark:bg-gray-700"
                     : "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenu}
               >
                 About
               </Link>
@@ -285,7 +311,7 @@ const Header = () => {
                     ? "text-blue-700 dark:text-blue-500 bg-gray-100 dark:bg-gray-700"
                     : "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenu}
               >
                 Courses
               </Link>
@@ -298,7 +324,7 @@ const Header = () => {
                     ? "text-blue-700 dark:text-blue-500 bg-gray-100 dark:bg-gray-700"
                     : "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenu}
               >
                 Performances
               </Link>
@@ -311,7 +337,7 @@ const Header = () => {
                     ? "text-blue-700 dark:text-blue-500 bg-gray-100 dark:bg-gray-700"
                     : "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenu}
               >
                 Contact
               </Link>
@@ -369,7 +395,7 @@ const Header = () => {
             <Link
               href="/loginPage"
               className="w-full block text-center px-4 py-2 text-sm text-white bg-blue-600 rounded-md hover:bg-blue-700 transition"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               Login
             </Link>
@@ -381,7 +407,7 @@ const Header = () => {
       {isMenuOpen && (
         <div
           className="fixed inset-0 z-30 bg-black bg-opacity-50 md:hidden"
-          onClick={() => setIsMenuOpen(false)}
+          onClick={closeMenu}
         ></div>
       )}
     </>
