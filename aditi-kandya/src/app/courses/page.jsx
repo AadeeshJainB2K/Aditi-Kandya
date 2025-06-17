@@ -1,11 +1,6 @@
-// app/courses/page.jsx
+"use client";
 import Header from "../components/header/header";
 import Image from "next/image";
-
-export const metadata = {
-  title: "Piano Courses | Aditi Kandya",
-  description: "Explore professional piano courses for all skill levels",
-};
 
 export default function Courses() {
   const courses = [

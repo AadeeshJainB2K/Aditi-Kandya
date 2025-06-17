@@ -9,23 +9,15 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Function to determine if a link is active
-  const isActive = (href) => {
-    return pathname === href;
-  };
+  const isActive = (href) => pathname === href;
 
-  // Toggle menu
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Toggle dark mode
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
     document.documentElement.classList.toggle("dark");
   };
 
-  // Close menu when clicking on a link or outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isMenuOpen && !event.target.closest("#mobile-menu")) {
@@ -34,9 +26,7 @@ const Header = () => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMenuOpen]);
 
   return (
@@ -52,6 +42,7 @@ const Header = () => {
                 src="/images/header/profilePicture.jpeg"
                 alt="Aditi Kanya"
                 fill
+                sizes="40px"
                 className="object-cover"
               />
             </div>
@@ -60,33 +51,34 @@ const Header = () => {
             </span>
           </Link>
 
-          {/* Mobile menu button */}
+          {/* Hamburger Button */}
           <button
             onClick={toggleMenu}
             type="button"
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-default"
             aria-expanded={isMenuOpen}
           >
             <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
+            <div className="w-5 h-5 relative flex items-center justify-center">
+              <span
+                className={`block absolute h-[2px] w-5 bg-current transform transition duration-300 ${
+                  isMenuOpen ? "rotate-45" : "-translate-y-1.5"
+                }`}
+              ></span>
+              <span
+                className={`block absolute h-[2px] w-5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? "opacity-0" : ""
+                }`}
+              ></span>
+              <span
+                className={`block absolute h-[2px] w-5 bg-current transform transition duration-300 ${
+                  isMenuOpen ? "-rotate-45" : "translate-y-1.5"
+                }`}
+              ></span>
+            </div>
           </button>
 
-          {/* Desktop menu */}
+          {/* Desktop Menu */}
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 items-center">
               <li>
@@ -97,7 +89,6 @@ const Header = () => {
                       ? "text-blue-700 dark:text-blue-500"
                       : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                   }`}
-                  aria-current={isActive("/home") ? "page" : undefined}
                 >
                   Home
                 </Link>
@@ -110,7 +101,6 @@ const Header = () => {
                       ? "text-blue-700 dark:text-blue-500"
                       : "text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
                   }`}
-                  aria-current={isActive("/about") ? "page" : undefined}
                 >
                   About
                 </Link>
@@ -162,9 +152,7 @@ const Header = () => {
                     />
                     <div className="theme-switch__container w-[4.5em] h-[2em] bg-[#3D7EAE] rounded-[6.25em] overflow-hidden cursor-pointer shadow-[0_-0.062em_0.062em_rgba(0,0,0,0.25),0_0.062em_0.125em_rgba(255,255,255,0.94)] relative transition-[0.5s_cubic-bezier(0,-0.02,0.4,1.25)]">
                       <div className="absolute inset-0 z-[1] shadow-[0_0.05em_0.187em_rgba(0,0,0,0.25)_inset,0_0.05em_0.187em_rgba(0,0,0,0.25)_inset] rounded-[6.25em]"></div>
-
                       <div className="theme-switch__clouds w-[1em] h-[1em] bg-[#F3FDFF] rounded-[6.25em] absolute bottom-[-0.5em] left-[0.25em] shadow-[0.75em_0.25em_#F3FDFF,-0.25em_-0.25em_#AACADF,1.15em_0.3em_#F3FDFF,0.4em_-0.1em_#AACADF,1.75em_0_#F3FDFF,1em_-0.05em_#AACADF,2.35em_0.25em_#F3FDFF,1.6em_-0.25em_#AACADF,2.9em_-0.05em_#F3FDFF,2.1em_0em_#AACADF,3.6em_-0.25em_#F3FDFF,2.7em_-0.35em_#AACADF,3.7em_-1.4em_0_0.35em_#F3FDFF,3.2em_-0.5em_#AACADF,3.3em_-1.7em_0_0.35em_#AACADF] transition-[0.5s_cubic-bezier(0,-0.02,0.4,1.25)]"></div>
-
                       <div className="theme-switch__stars-container absolute text-white top-[-100%] left-[0.25em] w-[2.2em] h-auto transition-[0.5s_cubic-bezier(0,-0.02,0.4,1.25)]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +167,6 @@ const Header = () => {
                           />
                         </svg>
                       </div>
-
                       <div
                         className={`theme-switch__circle-container w-[2.7em] h-[2.7em] bg-[rgba(255,255,255,0.1)] absolute left-[-0.35em] top-[-0.35em] rounded-[6.25em] shadow-[inset_0_0_0_2.7em_rgba(255,255,255,0.1),inset_0_0_0_2.7em_rgba(255,255,255,0.1),0_0_0_0.5em_rgba(255,255,255,0.1),0_0_0_1em_rgba(255,255,255,0.1)] flex transition-[0.3s_cubic-bezier(0,-0.02,0.35,1.17)] pointer-events-none ${
                           isDarkMode ? "left-[calc(100%-2.7em+0.35em)]" : ""
@@ -215,7 +202,7 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile menu - now sliding from right to left */}
+      {/* Mobile Menu */}
       <div
         id="mobile-menu"
         className={`fixed top-0 right-0 z-40 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out ${
@@ -234,6 +221,7 @@ const Header = () => {
                   src="/images/header/profilePicture.jpeg"
                   alt="Aditi Kanya"
                   fill
+                  sizes="40px"
                   className="object-cover"
                 />
               </div>
@@ -242,23 +230,22 @@ const Header = () => {
               </span>
             </Link>
             <button
-              onClick={toggleMenu}
+              onClick={() => setIsMenuOpen(false)}
+              type="button"
               className="p-2 text-gray-500 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             >
+              <span className="sr-only">Close menu</span>
               <svg
-                className="w-6 h-6"
-                aria-hidden="true"
+                className="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
               >
                 <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                  fillRule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                ></path>
               </svg>
             </button>
           </div>
@@ -343,9 +330,7 @@ const Header = () => {
                   />
                   <div className="theme-switch__container w-full h-[2em] bg-[#3D7EAE] rounded-[6.25em] overflow-hidden cursor-pointer shadow-[0_-0.062em_0.062em_rgba(0,0,0,0.25),0_0.062em_0.125em_rgba(255,255,255,0.94)] relative transition-[0.5s_cubic-bezier(0,-0.02,0.4,1.25)]">
                     <div className="absolute inset-0 z-[1] shadow-[0_0.05em_0.187em_rgba(0,0,0,0.25)_inset,0_0.05em_0.187em_rgba(0,0,0,0.25)_inset] rounded-[6.25em]"></div>
-
                     <div className="theme-switch__clouds w-[1em] h-[1em] bg-[#F3FDFF] rounded-[6.25em] absolute bottom-[-0.5em] left-[0.25em] shadow-[0.75em_0.25em_#F3FDFF,-0.25em_-0.25em_#AACADF,1.15em_0.3em_#F3FDFF,0.4em_-0.1em_#AACADF,1.75em_0_#F3FDFF,1em_-0.05em_#AACADF,2.35em_0.25em_#F3FDFF,1.6em_-0.25em_#AACADF,2.9em_-0.05em_#F3FDFF,2.1em_0em_#AACADF,3.6em_-0.25em_#F3FDFF,2.7em_-0.35em_#AACADF,3.7em_-1.4em_0_0.35em_#F3FDFF,3.2em_-0.5em_#AACADF,3.3em_-1.7em_0_0.35em_#AACADF] transition-[0.5s_cubic-bezier(0,-0.02,0.4,1.25)]"></div>
-
                     <div className="theme-switch__stars-container absolute text-white top-[-100%] left-[0.25em] w-[2.2em] h-auto transition-[0.5s_cubic-bezier(0,-0.02,0.4,1.25)]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -360,7 +345,6 @@ const Header = () => {
                         />
                       </svg>
                     </div>
-
                     <div
                       className={`theme-switch__circle-container w-[2.7em] h-[2.7em] bg-[rgba(255,255,255,0.1)] absolute left-[-0.35em] top-[-0.35em] rounded-[6.25em] shadow-[inset_0_0_0_2.7em_rgba(255,255,255,0.1),inset_0_0_0_2.7em_rgba(255,255,255,0.1),0_0_0_0.5em_rgba(255,255,255,0.1),0_0_0_1em_rgba(255,255,255,0.1)] flex transition-[0.3s_cubic-bezier(0,-0.02,0.35,1.17)] pointer-events-none ${
                         isDarkMode ? "left-[calc(100%-2.7em+0.35em)]" : ""
@@ -393,11 +377,11 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Overlay for mobile menu */}
+      {/* Overlay */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 z-30 bg-black bg-opacity-50 md:hidden"
-          onClick={toggleMenu}
+          onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
     </>
