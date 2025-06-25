@@ -178,9 +178,13 @@ export default function Performances() {
           <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
             Contact me for concert bookings, private events, or collaborations
           </p>
-          <button className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">
+
+          <a
+            href="/contact"
+            className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition"
+          >
             Contact Me
-          </button>
+          </a>
         </section>
       </main>
     </div>
