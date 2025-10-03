@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 
-const Header = () => {
+const Header = ({ toggleSidebar }) => {
   const { data: session, status } = useSession();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -515,6 +515,32 @@ const Header = () => {
                           >
                             <div className="theme-switch__spot absolute top-[0.6em] left-[0.25em] w-[0.6em] h-[0.6em] rounded-[6.25em] bg-[#959DB1] shadow-[0em_0.025em_0.05em_rgba(0,0,0,0.25)_inset]"></div>
                             <div className="theme-switch__spot absolute top-[0.75em] left-[1.1em] w-[0.3em] h-[0.3em] rounded-[6.25em] bg-[#959DB1] shadow-[0em_0.025em_0.05em_rgba(0,0,0,0.25)_inset]"></div>
+                            <div className="theme-switch__spot absolute top-[0.25em] left-[0.65em] w-[0.2em] h-[0.2em] rounded-[6.25em] bg-[#959DB1] shadow-[0em_0.025em_0.05em_rgba(0,0,0,0.25)_inset]"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              {renderAuthLinks(true)}
+            </div>
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black bg-opacity-50 md:hidden"
+          onClick={closeMenu}
+        ></div>
+      )}
+    </>
+  );
+};
+
+export default Header;
+ame="theme-switch__spot absolute top-[0.75em] left-[1.1em] w-[0.3em] h-[0.3em] rounded-[6.25em] bg-[#959DB1] shadow-[0em_0.025em_0.05em_rgba(0,0,0,0.25)_inset]"></div>
                             <div className="theme-switch__spot absolute top-[0.25em] left-[0.65em] w-[0.2em] h-[0.2em] rounded-[6.25em] bg-[#959DB1] shadow-[0em_0.025em_0.05em_rgba(0,0,0,0.25)_inset]"></div>
                           </div>
                         </div>
