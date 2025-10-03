@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Sidebar = () => {
+const Sidebar = ({ isSidebarOpen }) => {
   return (
     <div className={`w-64 h-screen fixed top-0 left-0 bg-white text-gray-800 p-4 flex flex-col border-r border-gray-200 z-30 pt-20 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 ease-in-out`}>
       

@@ -540,29 +540,4 @@ const Header = ({ toggleSidebar }) => {
 };
 
 export default Header;
-ame="theme-switch__spot absolute top-[0.75em] left-[1.1em] w-[0.3em] h-[0.3em] rounded-[6.25em] bg-[#959DB1] shadow-[0em_0.025em_0.05em_rgba(0,0,0,0.25)_inset]"></div>
-                            <div className="theme-switch__spot absolute top-[0.25em] left-[0.65em] w-[0.2em] h-[0.2em] rounded-[6.25em] bg-[#959DB1] shadow-[0em_0.025em_0.05em_rgba(0,0,0,0.25)_inset]"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-              {renderAuthLinks(true)}
-            </div>
-        </div>
-      </div>
 
-      {/* Overlay */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black bg-opacity-50 md:hidden"
-          onClick={closeMenu}
-        ></div>
-      )}
-    </>
-  );
-};
-
-export default Header;

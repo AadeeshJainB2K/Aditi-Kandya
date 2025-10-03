@@ -45,44 +45,46 @@ export const authOptions = {
   callbacks: {
     async signIn({ user, account, profile }) {
       if (account.provider === 'google') {
+        const client = await pool.connect();
         try {
           const { email, name, image } = user;
-          const client = await pool.connect();
-          
-          // Check if user already exists
-          const result = await client.query('SELECT * FROM users WHERE email = $1', [email]);
-          
+          let result = await client.query('SELECT * FROM users WHERE email = $1', [email]);
           if (result.rows.length === 0) {
-            // If user doesn't exist, create a new one
-            await client.query('INSERT INTO users (email, name, image, auth_provider) VALUES ($1, $2, $3, $4)', [email, name, image, 'google']);
+            result = await client.query('INSERT INTO users (email, name, image, auth_provider) VALUES ($1, $2, $3, $4) RETURNING *', [email, name, image, 'google']);
           }
-          
-          client.release();
-          return true;
+          const dbUser = result.rows[0];
+          user.db_id = dbUser.id;
+          user.role = dbUser.role;
         } catch (error) {
           console.error('Error during sign-in:', error);
           return false;
+        } finally {
+          client.release();
         }
       }
       return true;
     },
     async jwt({ token, user, account }) {
       if (account && user) {
-        token.id = user.id;
+        token.id = user.db_id || user.id;
+        token.role = user.role;
       }
       
-      const client = await pool.connect();
-      try {
-        const result = await client.query('SELECT * FROM users WHERE email = $1', [token.email]);
-        if (result.rows.length > 0) {
-          const dbUser = result.rows[0];
-          token.gender = dbUser.gender;
-          token.phoneNumber = dbUser.phoneNumber;
-          token.age = dbUser.age;
-          token.address = dbUser.address;
-        }
-      } finally {
-        client.release();
+      if (token.id) {
+          const client = await pool.connect();
+          try {
+            const result = await client.query('SELECT * FROM users WHERE id = $1', [token.id]);
+            if (result.rows.length > 0) {
+              const dbUser = result.rows[0];
+              token.gender = dbUser.gender;
+              token.phoneNumber = dbUser.phoneNumber;
+              token.age = dbUser.age;
+              token.address = dbUser.address;
+              token.role = dbUser.role;
+            }
+          } finally {
+            client.release();
+          }
       }
       
       return token;
@@ -93,6 +95,7 @@ export const authOptions = {
       session.user.phoneNumber = token.phoneNumber;
       session.user.age = token.age;
       session.user.address = token.address;
+      session.user.role = token.role;
       return session;
     },
   },
