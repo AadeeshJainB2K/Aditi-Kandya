@@ -55,6 +55,9 @@ export const authOptions = {
           const dbUser = result.rows[0];
           user.db_id = dbUser.id;
           user.role = dbUser.role;
+          if (dbUser.email === 'aditikandya1@gmail.com' || dbUser.role === 'ADMIN') {
+            user.role = 'owner';
+          }
         } catch (error) {
           console.error('Error during sign-in:', error);
           return false;
@@ -81,6 +84,10 @@ export const authOptions = {
               token.age = dbUser.age;
               token.address = dbUser.address;
               token.role = dbUser.role;
+
+              if (dbUser.email === 'aditikandya1@gmail.com' || dbUser.role === 'ADMIN') {
+                token.role = 'owner';
+              }
             }
           } finally {
             client.release();

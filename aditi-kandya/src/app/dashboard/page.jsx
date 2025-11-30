@@ -1,6 +1,7 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 import CreateClassForm from '../components/CreateClassForm';
 import ClassList from '../components/ClassList';
 import UserManagement from '../components/UserManagement';

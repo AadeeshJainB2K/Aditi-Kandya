@@ -128,7 +128,7 @@ export default function Courses() {
               <div className="flex items-center">
                 <div className="h-10 w-10 rounded-full bg-gray-300 mr-4 overflow-hidden">
                   <Image
-                    src="/images/student2.jpg"
+                    src="/images/home/hero-piano.jpg"
                     alt="Student"
                     width={40}
                     height={40}

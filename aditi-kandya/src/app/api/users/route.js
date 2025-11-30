@@ -6,9 +6,20 @@ import pool from '../../../lib/db';
 export async function GET(req) {
   const session = await getServerSession(authOptions);
 
-  if (!session || session.user.role !== 'admin') {
+  // Ensure the user is an admin or owner to access this route
+  if (!session || !['admin', 'owner', 'ADMIN'].includes(session.user.role)) {
     return new NextResponse(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const { searchParams } = new URL(req.url);
+  const role = searchParams.get('role');
+
+  if (!role) {
+    return new NextResponse(JSON.stringify({ error: 'Role parameter is required' }), {
+      status: 400,
       headers: { 'Content-Type': 'application/json' },
     });
   }
@@ -16,7 +27,8 @@ export async function GET(req) {
   try {
     const client = await pool.connect();
     try {
-      const result = await client.query('SELECT id, name, email, role FROM users');
+      const query = 'SELECT id, name, email, role FROM users WHERE role = $1';
+      const result = await client.query(query, [role]);
       return NextResponse.json(result.rows, { status: 200 });
     } finally {
       client.release();

@@ -254,19 +254,19 @@ const Home = () => {
                     title: "Beethoven Sonata Cycle",
                     location: "Royal Festival Hall, London",
                     date: "June 2023",
-                    image: "/images/concert1.jpg",
+                    image: "/images/home/hero-piano.jpg",
                   },
                   {
                     title: "Chopin Masterclass",
                     location: "Paris Conservatoire",
                     date: "March 2023",
-                    image: "/images/masterclass.jpg",
+                    image: "/images/home/hero-piano.jpg",
                   },
                   {
                     title: "Mozart Concerto No. 21",
                     location: "Berlin Philharmonie",
                     date: "December 2022",
-                    image: "/images/concert2.jpg",
+                    image: "/images/home/hero-piano.jpg",
                   },
                 ].map((event) => (
                   <div
@@ -345,14 +345,14 @@ const Home = () => {
                       "Aditi transformed my daughter's approach to piano. In just one year, she went from struggling with basic pieces to winning her first competition. The technical foundation Aditi provides is unmatched.",
                     name: "Sarah Johnson",
                     role: "Parent of Advanced Student",
-                    image: "/images/parent1.jpg",
+                    image: "/images/home/hero-piano.jpg",
                   },
                   {
                     quote:
                       "As an adult learner, I was nervous about starting piano lessons. Aditi made me feel comfortable while challenging me to improve. Her patience and expertise are remarkable.",
                     name: "Michael Chen",
                     role: "Adult Student",
-                    image: "/images/student3.jpg",
+                    image: "/images/home/hero-piano.jpg",
                   },
                 ].map((testimonial) => (
                   <div
